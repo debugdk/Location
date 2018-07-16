@@ -2,14 +2,15 @@
 <html>
 <head>
 	<script>
-navigator.geolocation.watchPosition(function(position) {
-	console.log(position);
-  console.log("i'm tracking you!");
-},
-function (error) { 
-  if (error.code == error.PERMISSION_DENIED)
-      console.log("you denied me :-(");
-});
+window.onload = function() {
+  var startPos;
+  var geoSuccess = function(position) {
+    startPos = position;
+    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+  };
+  navigator.geolocation.getCurrentPosition(geoSuccess);
+};
     
 </script>
 
